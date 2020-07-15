@@ -1,0 +1,112 @@
+﻿@using WebsiteNews.Models;
+@model WebsiteNews.Models.tbTinTuc
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    tbNguoiDung nd = (tbNguoiDung)Session["nguoidung"];
+    var item = "selected";
+
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.MaTinTuc)
+
+        <div class="form-group">
+            <b>Tên tin tức</b>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TenTinTuc, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TenTinTuc, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <b>Loại tin</b>
+            <div class="col-md-10">
+                @Html.DropDownList("MaLoaiTinTuc", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.MaLoaiTinTuc, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <b>Nội dung</b>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NoiDungTinTuc, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NoiDungTinTuc, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <b>Ngày đăng tin</b>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NgayDangTinTuc, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                @Html.ValidationMessageFor(model => model.NgayDangTinTuc, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <b>Lượt xem</b>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LuotXemTinTuc, new { htmlAttributes = new { @class = "form-control", disabled = "disabled"} })
+                @Html.ValidationMessageFor(model => model.LuotXemTinTuc, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <input  type="hidden" name="MaNguoiDung" value="@nd.MaNguoiDung"/>
+
+        <div class="form-group">
+            <b>Ảnh tin tức</b>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AnhTinTuc, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AnhTinTuc, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <b>Ifram Video</b>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IfrVideo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.IfrVideo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <b>Video</b>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.video, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.video, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <b>Trang thái tin</b>
+            <div class="col-md-10">
+                <div class="checkbox">
+                    <select name="TrangThaiTin">
+                        <option value="true" @if (Model.TrangThaiTin == true) {  @item }else {}>BẬT</option>
+                        <option value="false" @if (Model.TrangThaiTin == false) {  @item }else {}>TẮT</option>
+                    </select>
+
+   </div>
+
+</div>
+
+</div>
+
+
+<div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Lưu" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

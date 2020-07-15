@@ -1,0 +1,21 @@
+﻿@using WebsiteNews.Models;
+@model List<tbTinTuc>
+    <div class="fashny-grids-inf row">
+        @foreach (var item in Model)
+        {
+            <div class="fashion-gd-1 col-lg-4 col-6">
+                <div class="fas-gallery-grid">
+                    <a href="#">
+                        <div class="content">
+                            <div class="content-overlay"></div>
+                            <img src="~/Content/Layout_NguoiDung/images/@item.AnhTinTuc" class="img-fluid" alt="">
+                            <div class="content-details fadeIn-bottom">
+                                <h4 class="content-title">@item.TenTinTuc</h4>
+
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        }
+    </div>

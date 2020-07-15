@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "DangNhap";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    if(Session["nguoidung"] != null)
+    {
+        Response.Redirect("/Home/Index");
+    }
+}
+<div class="container">
+    <h2 style="text-align:center"> Đăng nhập  </h2>
+</div>
+<div class="container shadow p-3 mb-5 bg-white rounded" style="width: 35%">
+    <form action="@Url.Action("DangNhap","TaiKhoanNguoiDung")" method="post">
+        <i class="fa fa-envelope"></i>
+        <input type="email" name="frmEmail" placeholder="Nhập Email" autofocus style="width:100% ; margin-bottom:2% ; height:40px" />
+        <div class="clearfix"></div>
+        <i class="fa fa-lock"></i>
+        <input type="password" name="frmMatKhau" placeholder="Nhập mật khẩu" autofocus style="width:100%; margin-bottom:2%; height:40px;" />
+        <div class="clearfix"></div>
+        <div class="row">
+            <input type="submit" value="Đăng nhập" class="btn btn-secondary" style="width:100%; margin-bottom:2%;" />
+        </div>
+    </form>
+   @ViewBag.thongbao
+</div>
+

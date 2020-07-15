@@ -1,0 +1,62 @@
+﻿@model IEnumerable<WebsiteNews.Models.tbTinTuc>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<p>
+    @Html.ActionLink("Create", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            <b>Tên tin tức</b>
+        </th>
+        <th>
+            <b>Ngày đăng</b>
+        </th>
+        <th>
+            <b>Ảnh</b>
+        </th>
+        <th>
+            <b>Trạng thái</b>
+        </th>
+        <th>
+            <b>Loại tin</b>
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenTinTuc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayDangTinTuc)
+        </td>
+        <td>
+            <img src="~/Content/Layout_NguoiDung/images/@item.AnhTinTuc" class="image-two img-fluid" style="width:100px; height:100px;">
+        </td>
+        <td>
+            @if(item.TrangThaiTin == true)
+            {
+                <span>Tin đang mở</span>
+            }
+            else
+            {
+                <span>Tin đang đóng</span>
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbLoaiTinTuc.TenLoaiTin)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaTinTuc }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MaTinTuc }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MaTinTuc })
+        </td>
+    </tr>
+}
+
+</table>

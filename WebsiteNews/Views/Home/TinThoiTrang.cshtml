@@ -1,0 +1,32 @@
+﻿@using WebsiteNews.Models;
+@model List<tbTinTuc>
+@foreach (var item in Model)
+{
+    <div class="maghny-grids-inf row">
+        <div class="mag-post-thumb col-md-6">
+            <a href="#"><img src="~/Content/Layout_NguoiDung/images/@item.AnhTinTuc" class="img-fluid" alt=""></a>
+
+        </div>
+        <div class="mag-post-fashion-details col-md-6 mt-md-0 mt-4">
+            <a href="#" class="link-mag">
+                <h4 class="mag-post-head">
+                    @item.TenTinTuc
+                </h4>
+            </a>
+            <div class="mag-post-meta mt-3">
+                <a href="#">
+                    <img src="~/Content/Layout_NguoiDung/images/@item.tbNguoiDung.AnhNguoiDung"
+                         class="img-fluid rounded-circle admin-img admin-img1" alt="">
+                </a> <span class="meta-author">
+                    <span>@item.tbNguoiDung.TenNguoiDung&nbsp;</span><a href="#" class="author-name">
+                    </a>
+                </span>
+                <span class="author-date">[ @item.NgayDangTinTuc.Value.TimeOfDay ]</span>
+            </div>
+            <p class="para my-3">
+                <div class="RutNgan">@item.NoiDungTinTuc</div>
+            </p>
+            <a href="#" class="read-more btn">@item.tbLoaiTinTuc.TenLoaiTin</a>
+        </div>
+    </div>
+}

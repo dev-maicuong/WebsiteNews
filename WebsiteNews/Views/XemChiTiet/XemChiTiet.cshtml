@@ -1,0 +1,38 @@
+﻿@using WebsiteNews.Models;
+@model tbTinTuc
+@{
+    ViewBag.Title = "XemChiTiet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="container shadow p-3 mb-5 bg-white rounded" style="width:80%;">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+            </ol>
+        </nav>
+        <div class="row">
+            <div class="col-md-9">
+                <h1 style="text-align:center"><b>@Model.TenTinTuc @Session["dem"]</b> </h1>
+                <br />
+                <span>
+                    <img src="~/Content/Layout_NguoiDung/images/@Model.tbNguoiDung.AnhNguoiDung"
+                         class="img-fluid rounded-circle admin-img admin-img1" alt="" style="width:50px; height:60px;">&nbsp; 
+                    <small class="text-muted">@Model.tbNguoiDung.TenNguoiDung</small>
+                    </span>
+                    <hr />
+                        <img class="img-fluid" src="~/Content/Layout_NguoiDung/images/@Model.AnhTinTuc" style="height:400px; width:350px;">
+                        <br />
+                        <p class="text-justify" style="font-weight:500;font-family:Arial;font-size:20px;color:black">@Model.NoiDungTinTuc</p>
+                    <hr />
+                    <img class="img-fluid" src="~/Content/Layout_NguoiDung/images/@Model.AnhTinTuc" style="height:400px; width:350px;">
+                    <p class="text-justify"style="font-weight:500;font-family:Arial;font-size:20px;color:black" >@Model.NoiDungTinTuc</p>
+                </div>
+                <div class="col-md-3" style="background-color:black;">
+                    <h1 style="text-align:center">Gắn qoảng cáo</h1>
+                </div>
+            </div>
+        </div>
+<br />
+

@@ -1,0 +1,42 @@
+﻿@using WebsiteNews.Models;
+@model tbNguoiDung
+@{
+    ViewBag.Title = "TrangChuNguoiDung";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    tbNguoiDung nd = (tbNguoiDung)Session["nguoidung"];
+    if(nd == null)
+    {
+        Response.Redirect("/Home/Index");
+    }
+}
+<center>
+    <a href="#aboutModal" data-toggle="modal" data-target="#myModal">
+        <img src="~/Content/Layout_NguoiDung/images/@Model.AnhNguoiDung" name="aboutme" width="120" height="140" class="img-circle">
+    </a>
+    <h3>@Model.TenNguoiDung</h3>
+    <em>--------------</em>
+</center>
+<div class="container shadow p-3 mb-5 bg-white rounded">
+    <div class="row">
+        <div class="col-md-4 btn btn-light"><center ><a href="@Url.Action("Index","NguoiDungDangTin")">Quản lý tin</a> </center> </div>
+        <div class="col-md-4 btn btn-light"><center><a href="@Url.Action("DoiMatKhau","NguoiDung")">Đổi mật khẩu</a></center> </div>
+        <div class="col-md-4 btn btn-light"><center><a href="@Url.Action("SuaThongTinCaNhan","NguoiDung", new {id = nd.MaNguoiDung })">Sữa thông tin cá nhân</a></center></div>
+    </div>
+    <hr />
+    <center>
+        <div class="row" style="width:30%">
+            <hr />
+            <i class="fa fa-envelope"></i>
+            <input type="text" class="form-control" value="@Model.EmailNguoiDung" disabled />
+            <i class="fa fa-address-card"></i>
+            <input type="text" class="form-control" value="@Model.DiaChiNguoiDung" disabled />
+            <i class="fa fa-phone"></i>
+            <input type="text" class="form-control" value="@Model.SDTNguoiDung" disabled />
+            <i class="fa fa-archive"></i>
+            <input type="text" class="form-control" value="@Model.SoTinDang" disabled />
+        </div>
+    </center>
+    <hr />
+    
+</div>
+

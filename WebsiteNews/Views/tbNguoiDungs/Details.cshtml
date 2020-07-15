@@ -1,0 +1,75 @@
+﻿@model WebsiteNews.Models.tbNguoiDung
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbNguoiDung</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenNguoiDung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenNguoiDung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailNguoiDung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailNguoiDung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MatKhauNguoiDung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MatKhauNguoiDung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiaChiNguoiDung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChiNguoiDung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SDTNguoiDung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SDTNguoiDung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnhNguoiDung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnhNguoiDung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoTinDang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoTinDang)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaNguoiDung }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,23 @@
+﻿@using WebsiteNews.Models;
+@model List<tbTinTuc>
+    <div class="mag-small-post">
+        @foreach (var item in Model)
+        {
+            
+            <div class="post-video-grid">
+                <div>
+                    <video controls="controls" style="height:280px; width: 380px;">
+                        <source src="~/Content/video/Xaomi9.mp4" type="video/mp4" />
+                    </video>
+                    <iframe width="560" height="315" src="https://www.youtube.com/watch?v=C1NAsHjjwi8&feature=youtu.be" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <h4 class="mag-post-title">
+                    <a href="#">
+                        @item.TenTinTuc
+                    </a>
+                    
+                </h4>
+            </div>
+            <br />
+        }
+    </div>

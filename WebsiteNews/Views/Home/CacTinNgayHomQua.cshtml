@@ -1,0 +1,19 @@
+﻿@using WebsiteNews.Models;
+@model List<tbTinTuc>
+<div id="demos">
+    <div class="owl-carousel owl-theme grid-col-4">
+        @foreach (var item in Model)
+        {
+            <div class="item">
+                <a href="#link">
+                    <div class="gallery-grid">
+                        <div class="content">
+                            <div class="content-overlay"></div>
+                            <img src="~/Content/Layout_NguoiDung/images/@item.AnhTinTuc" class="image-two img-fluid">
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,105 @@
+﻿@model WebsiteNews.Models.tbTinTuc
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var item = "selected";
+}
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <span>Tên tin tức</span>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenTinTuc)
+        </dd>
+
+        <dt>
+            <span>Nội dung </span>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoiDungTinTuc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayDangTinTuc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayDangTinTuc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LuotXemTinTuc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LuotXemTinTuc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnhTinTuc)
+        </dt>
+
+        <dd>
+            <img class="img-fluid" src="~/Content/Layout_NguoiDung/images/@Model.AnhTinTuc" alt="">
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IfrVideo)
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.IfrVideo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.video)
+        </dt>
+
+        <dd>
+            <video controls="controls" style="height:280px; width: 380px;">
+                <source src="~/Content/video/@Model.video" type="video/mp4" />
+            </video>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrangThaiTin)
+        </dt>
+
+        <dd>
+            @if(Model.TrangThaiTin == true)
+            {
+                <span>Bật</span>
+            }
+            else
+            {
+                <span>Tắt</span>
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbLoaiTinTuc.TenLoaiTin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbLoaiTinTuc.TenLoaiTin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbNguoiDung.TenNguoiDung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbNguoiDung.TenNguoiDung)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaTinTuc }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

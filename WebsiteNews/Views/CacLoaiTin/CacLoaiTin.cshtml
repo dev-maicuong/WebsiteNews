@@ -1,0 +1,6 @@
+﻿@using WebsiteNews.Models;
+@model List<tbLoaiTinTuc>
+@foreach (var item in Model)
+{
+    <a class="dropdown-item" href="@Url.Action("CacLoaiTin","LocTheoCacLoaiTin", new { macacloaitin = item.MaLoaiTinTuc })">@item.TenLoaiTin</a>
+}

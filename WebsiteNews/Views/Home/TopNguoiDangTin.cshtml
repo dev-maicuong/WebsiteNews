@@ -1,0 +1,18 @@
+﻿@using WebsiteNews.Models;
+@model List<tbNguoiDung>
+<div class="mag-small-post">
+    @foreach (var item in Model)
+    {
+        <div class="post-item-grid align-items-center row mb-4">
+            <div class="mag-post-thumb col-3 pl-0">
+
+                <a href="#"><img src="~/Content/Layout_NguoiDung/images/@item.AnhNguoiDung" class="img-fluid" alt=""></a>
+            </div>
+            <div class="mag-post-details col-9">
+                <h4 class="mag-post-cate">
+                    <a href="#">@item.TenNguoiDung</a>
+                </h4>
+            </div>
+        </div>
+    }
+</div>

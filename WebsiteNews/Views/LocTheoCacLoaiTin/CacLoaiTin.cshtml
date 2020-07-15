@@ -1,0 +1,53 @@
+﻿@using WebsiteNews.Models;
+@model List<tbTinTuc>
+@{
+    ViewBag.Title = "CacLoaiTin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container shadow p-3 mb-5 bg-white rounded" style="width:80%;">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="maghny-grids-inf row">
+                @foreach (var item in Model)
+                {
+                    <div class="maghny-gd-1 col-md-6">
+                        <a href="@Url.Action("XemChiTiet","XemChiTiet", new { matintuc = item.MaTinTuc})">
+                            <div class="maghny-grid">
+                                <figure class="effect-lily">
+                                    <img class="img-fluid" src="~/Content/Layout_NguoiDung/images/@item.AnhTinTuc">
+                                    <figcaption>
+                                        <div>
+                                            <h4> </h4>
+                                            <p> @item.TenTinTuc</p>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                            <h5>
+                                <a href="#">
+
+                                </a>
+                            </h5>
+                            <p class="RutNgan">@item.NoiDungTinTuc</p>
+                        </a>
+                        <div class="mag-post-meta">
+                            <a href="#">
+                                <img src="~/Content/Layout_NguoiDung/images/@item.tbNguoiDung.AnhNguoiDung"
+                                        class="img-fluid rounded-circle admin-img admin-img1" alt="">
+                            </a><span class="meta-author">
+                                <span>&nbsp;</span><a href="#" class="author-name">
+                                    @item.tbNguoiDung.TenNguoiDung
+                                </a>
+                            </span>
+                            <span class="author-date"></span>
+                        </div>
+                    </div>
+                    <hr />
+                }
+            </div>
+        </div>
+        <div class="col-md-3">
+            Phần qoảng cáo
+        </div>
+    </div>
+</div>

@@ -45,10 +45,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -120,9 +128,43 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CacLoaiTinController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LocTheoCacLoaiTinController.cs" />
+    <Compile Include="Controllers\NguoiDungController.cs" />
+    <Compile Include="Controllers\NguoiDungDangTinController.cs" />
+    <Compile Include="Controllers\TaiKhoanNguoiDungController.cs" />
+    <Compile Include="Controllers\tbNguoiDungsController.cs" />
+    <Compile Include="Controllers\XemChiTietController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataWebsiteNews.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataWebsiteNews.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataWebsiteNews.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataWebsiteNews.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataWebsiteNews.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataWebsiteNews.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>DataWebsiteNews.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbLoaiTinTuc.cs">
+      <DependentUpon>DataWebsiteNews.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbNguoiDung.cs">
+      <DependentUpon>DataWebsiteNews.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbTinTuc.cs">
+      <DependentUpon>DataWebsiteNews.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -196,10 +238,21 @@
     <Content Include="Content\Layout_NguoiDung\js\jquery-3.3.1.min.js" />
     <Content Include="Content\Layout_NguoiDung\js\popper.min.js" />
     <Content Include="Content\Layout_NguoiDung\js\sliderPro.min.js" />
+    <Content Include="Content\video\Xaomi9.mp4" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\DataWebsiteNews.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DataWebsiteNews.Context.cs</LastGenOutput>
+      <DependentUpon>DataWebsiteNews.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\DataWebsiteNews.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DataWebsiteNews.edmx</DependentUpon>
+      <LastGenOutput>DataWebsiteNews.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\Layout_NguoiDung\fonts\fontawesome-webfont.eot" />
@@ -207,6 +260,13 @@
     <Content Include="Content\Layout_NguoiDung\fonts\fontawesome-webfont.woff" />
     <Content Include="Content\Layout_NguoiDung\fonts\fontawesome-webfont.woff2" />
     <Content Include="Content\Layout_NguoiDung\fonts\FontAwesome.otf" />
+    <EntityDeploy Include="Models\DataWebsiteNews.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DataWebsiteNews.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\DataWebsiteNews.edmx.diagram">
+      <DependentUpon>DataWebsiteNews.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -229,13 +289,40 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\TinMoiNgayHomNay.cshtml" />
+    <Content Include="Views\Home\TinCongNghe.cshtml" />
+    <Content Include="Views\Home\TinTheThao.cshtml" />
+    <Content Include="Views\Home\TinTaiChinh.cshtml" />
+    <Content Include="Views\Home\TinXe.cshtml" />
+    <Content Include="Views\Home\TinThoiTrang.cshtml" />
+    <Content Include="Views\Home\TinAmThuc.cshtml" />
+    <Content Include="Views\Home\TinDuLich.cshtml" />
+    <Content Include="Views\Home\CacTinNgayHomQua.cshtml" />
+    <Content Include="Views\Home\TinDocNhieuNhat.cshtml" />
+    <Content Include="Views\Home\TopNguoiDangTin.cshtml" />
+    <Content Include="Views\Home\Video.cshtml" />
+    <Content Include="Views\CacLoaiTin\CacLoaiTin.cshtml" />
+    <Content Include="Views\XemChiTiet\XemChiTiet.cshtml" />
+    <Content Include="Views\LocTheoCacLoaiTin\CacLoaiTin.cshtml" />
+    <Content Include="Views\TaiKhoanNguoiDung\DangNhap.cshtml" />
+    <Content Include="Views\NguoiDungDangTin\Create.cshtml" />
+    <Content Include="Views\NguoiDungDangTin\Delete.cshtml" />
+    <Content Include="Views\NguoiDungDangTin\Details.cshtml" />
+    <Content Include="Views\NguoiDungDangTin\Edit.cshtml" />
+    <Content Include="Views\NguoiDungDangTin\Index.cshtml" />
+    <Content Include="Views\TaiKhoanNguoiDung\TaoTaiKhoan.cshtml" />
+    <Content Include="Views\tbNguoiDungs\Create.cshtml" />
+    <Content Include="Views\tbNguoiDungs\Delete.cshtml" />
+    <Content Include="Views\tbNguoiDungs\Details.cshtml" />
+    <Content Include="Views\tbNguoiDungs\Edit.cshtml" />
+    <Content Include="Views\tbNguoiDungs\Index.cshtml" />
+    <Content Include="Views\NguoiDung\TrangChuNguoiDung.cshtml" />
+    <Content Include="Views\NguoiDung\DoiMatKhau.cshtml" />
+    <Content Include="Views\NguoiDung\SuaThongTinCaNhan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -249,6 +336,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
